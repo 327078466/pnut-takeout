@@ -7,7 +7,7 @@
 			<!-- 上部分 -->
 			<view class="top-section">
 				<!-- 这里放置上部分的内容 -->
-				<view class="top_left">
+				<view class="top_left"  @click="searchAdd(shop)">
 					<image src="/static/index_image/location.png" class="location_image"></image>
 					<text class="address">{{address}}</text>
 					<image src="/static/index_image//arrows.png" class="arrows_image"></image>
@@ -316,6 +316,7 @@
 			this.getAds();
 		},
 		methods: {
+			
 			enevtname() {
 				console.log('触底事件');
 				this.loadShops(); // 用户滚动到底部时加载更多数据
@@ -416,6 +417,13 @@
 				console.log("跳转页面",shopStr)
 				uni.navigateTo({
 					url: `/pages/store/store?store=${shopStr}`
+				});
+			},
+			searchAdd(value) {
+				const shopStr = encodeURIComponent(this.address)
+				console.log("跳转页面",shopStr)
+				uni.navigateTo({
+					url: `/pages/searchAddress/searchAddress?obj=${shopStr}`
 				});
 			},
 		},

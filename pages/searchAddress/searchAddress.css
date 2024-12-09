@@ -1,0 +1,69 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	/* 使容器高度等于视口高度 */
+}
+.scroll-container{
+	height: 100vh; /* 或设置为适当的高度 */
+	overflow-y: auto; /* 允许垂直滚动 */
+}
+.search-bar{
+	width: 100%;
+	height: 100rpx;
+	margin-top: 2%;
+}
+.search-bar-box{
+	display: flex;
+	flex-direction: row; 
+	align-items: center;
+	margin: 0 auto;
+	width: 95%;
+	height: 70rpx;
+	border:1rpx ;
+	border-radius: 50rpx;
+	background-color: #e8e8e8;
+}
+.search-span{
+	width: 80rpx;
+	height: 50rpx;
+	margin-top: 6rpx;
+	margin-left: 30rpx;
+}
+.search-text{
+	width: 100%;
+	margin-top: 10rpx;
+	margin-left: 20rpx;
+	font-size: 30rpx;
+	color: #7f7f81;
+}
+.search-btn{
+	background-color: #f6cc66; /* Green */
+	color: white;
+	text-align: center;
+	display: inline-block;
+	font-size: 35rpx;
+	width: 200rpx;
+	height: 60rpx;
+	line-height: 65rpx;
+	border-radius: 30rpx;
+	letter-spacing: 3rpx;
+}
+
+.currentAdd{
+	display: flex;
+	flex-direction: row; 
+	align-items: center;
+	margin: 0 auto;
+	width: 95%;
+	height: 100rpx;
+	border:1rpx ;
+	border-radius: 20rpx;
+	background-color: #e8e8e8;
+}
+.dingweiImage{
+	width: 60rpx;
+	height: 40rpx;
+	margin-top: 6rpx;
+	margin-left: 40%;
+}

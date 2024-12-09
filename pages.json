@@ -153,8 +153,19 @@
         	"path" : "pages/store/store",
         	"style" : 
         	{
-        		"navigationBarTitleText" : ""
+        		"navigationBarTitleText" : "商家列表"
         	}
+        }
+        ,{
+            "path" : "pages/searchAddress/searchAddress",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "定位地址",
+				"app-plus": {
+					"titleNView": false
+				}
+            }
+            
         }
     ],
 	"subPackages": [

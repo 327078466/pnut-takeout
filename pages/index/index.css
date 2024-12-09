@@ -325,7 +325,7 @@
 
 .chunk-item image {
 	    width: 100rpx; /* 根据需要调整宽度 */
-		height: 100rpx;
+		height: 90rpx;
 	margin-top: 10rpx;
 
 }
