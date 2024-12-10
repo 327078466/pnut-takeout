@@ -15,10 +15,9 @@
 				<view class="top_right">
 					<view class="search-wrapper">
 						<image src="/static/index_image/search.png" class="search-icon" />
-						<input class="search-input" placeholder="搜索" />
+						<input class="search-input" placeholder="请输入您需要的内容" @confirm="onSearch"/>
 					</view>
 				</view>
-
 			</view>
 			<!-- 下部分 -->
 			<view class="bottom-section">
@@ -213,8 +212,11 @@
 </style>
 <script>
 	import {
-		getStoreApi,getLocation,getPlatformLabel
+		getStoreApi,getPlatformLabel
 	} from '../../api/index';
+	import {
+		getLocation
+	} from '../../api/mapaddress';
 	export default {
 		data() {
 			return {
@@ -306,17 +308,37 @@
 			this.scrollTop = 0;
 			this.platformLabel();
 		},
+		onShow(){
+			let obj = wx.getStorageSync('checkAddress');
+			console.log("获取到缓存中地址",obj)
+			if(obj){ // 判断缓存中是否存在 如果存在则默认 不存在自动获取
+				this.address = obj
+				wx.removeStorageSync('checkAddress')
+			}else{
+				this.getLocation();
+			}
+			this.loadShops();
+			this.getAds();
+		},
 		onLoad() {
 			
 		},
 		onReady() {
 			// this.fetchData();
-			this.getLocation();
-			this.loadShops();
-			this.getAds();
 		},
 		methods: {
-			
+			onSearch(event) {
+			      const searchQuery = event.detail.value;
+			      // 执行搜索操作，例如调用 API
+			      this.performSearch(searchQuery);
+			    },
+		    performSearch(query) {
+			     const shopStr = encodeURIComponent(query)
+			     console.log("跳转页面",shopStr)
+			     uni.navigateTo({
+			     	url: `/pages/store/store?searchKey=${shopStr}`
+			     });
+			},
 			enevtname() {
 				console.log('触底事件');
 				this.loadShops(); // 用户滚动到底部时加载更多数据
@@ -421,7 +443,6 @@
 			},
 			searchAdd(value) {
 				const shopStr = encodeURIComponent(this.address)
-				console.log("跳转页面",shopStr)
 				uni.navigateTo({
 					url: `/pages/searchAddress/searchAddress?obj=${shopStr}`
 				});

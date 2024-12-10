@@ -169,10 +169,18 @@
 		},
 		created() {},
 		onLoad(options) {
-		    const storeObj = options.store;
-			const shopStr = decodeURIComponent(storeObj); // 解码 URL 参数
+		    let storeObj = options.store;
+			let searchKey = options.searchKey;
+			let shopStr = decodeURIComponent(storeObj); // 解码 URL 参数
+			let searchKeyStr = decodeURIComponent(searchKey); // 解码 URL 参数
 			// 开始查询符合条件的店铺
-			this.loadShops(shopStr);
+			if(shopStr == 'undefined'){
+				shopStr = ''
+			}
+			if(searchKeyStr == 'undefined'){
+				searchKeyStr = ''
+			}
+			this.loadShops(searchKeyStr,shopStr);
 		},
 
 		watch: {
@@ -189,9 +197,9 @@
 		methods: {
 			enevtname() {
 				console.log('触底事件');
-				this.loadShops(); // 用户滚动到底部时加载更多数据
+				this.loadShops("",""); // 用户滚动到底部时加载更多数据
 			},
-			async loadShops(searchKey) {
+			async loadShops(searchKey,platformLabel) {
 				console.log('开始执行获取店铺')
 				if (this.loading || this.noMoreData) return; // 防止重复加载
 				this.loading = true;
@@ -201,7 +209,8 @@
 						limit: 5,
 						lat: this.lat,
 						lng: this.lng,
-						platformLabel: searchKey
+						platformLabel: platformLabel,
+						searchKey: searchKey
 					});
 					if (response.code === 0) {
 						const newShops = response.data.list; // 解析接口返回的数据

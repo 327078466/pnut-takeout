@@ -12,6 +12,8 @@
 	width: 100%;
 	height: 100rpx;
 	margin-top: 2%;
+	display: flex;
+	align-items: center; /* 使子元素在垂直方向上居中对齐 */
 }
 .search-bar-box{
 	display: flex;
@@ -54,6 +56,7 @@
 	display: flex;
 	flex-direction: row; 
 	align-items: center;
+	justify-content: space-between; /* 使子元素分布在容器的两端 */
 	margin: 0 auto;
 	width: 95%;
 	height: 100rpx;
@@ -65,5 +68,43 @@
 	width: 60rpx;
 	height: 40rpx;
 	margin-top: 6rpx;
-	margin-left: 40%;
+	margin-right: 5%;
+}
+.addRight{
+	width: 260rpx;
+	display: flex;
+	align-items: center; /* 使子元素在垂直方向上居中对齐 */
+}
+.currentAddText{
+	display: block; /* 必须设置为 block 或 inline-block 才能使用 text-overflow */
+	white-space: nowrap; /* 不换行 */
+	overflow: hidden; /* 超过宽度的内容隐藏 */
+	text-overflow: ellipsis; /* 超过部分用省略号表示 */
+	width: 400rpx;
+}
+
+.addressDeli{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 auto;
+	width: 95%;
+	height: 100rpx;
+	border:1rpx ;
+	border-radius: 20rpx;
+	background-color: #e8e8e8;
+	margin-top: 10rpx;
+}
+
+.location_image {
+	width: 40rpx;
+	/* 图片宽度 */
+	height: 40rpx;
+	/* 图片高度 */
+	margin-right: 8rpx;
+	/* 图片与文字之间的间距 */
+}
+.scroll-container{
+	height: 100vh; /* 或设置为适当的高度 */
+	overflow-y: auto; /* 允许垂直滚动 */
 }

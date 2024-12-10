@@ -19,12 +19,7 @@ export const  getStoreApi= (data) =>{
 		data: data
 	})
 }
-export const  getLocation= (data) =>{
-	return uni.$ajax.get({
-		url: 'mp/map/getAddress',
-		data: data
-	})
-}
+
 export const  getPlatformLabel= () =>{
 	return uni.$ajax.get({
 		url: 'mp/store/platformLabel'
